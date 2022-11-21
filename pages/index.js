@@ -20,6 +20,16 @@ export default function Home() {
     setAnimalInput("");
   }
 
+  async function handleImageFetch() {
+    const response = await fetch("/api/image", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+  }
+
   return (
     <div>
       <Head>
@@ -42,6 +52,8 @@ export default function Home() {
         </form>
         <div className={styles.result}>{result}</div>
       </main>
+
+      <button onClick={handleImageFetch}>Image Boy!</button>
     </div>
   );
 }
